@@ -50,7 +50,7 @@ processing:
       STREAMX_BLUEPRINTS_TEMPLATE-ENGINE-PROCESSING-SERVICE_CONFIGURATIONS_0__OUTPUT-KEY-TEMPLATE: generated/{{id}}.html
 
 delivery:
-  web-delivery-service:
+  web:
     image: web-delivery-service
     incoming:
       pages:

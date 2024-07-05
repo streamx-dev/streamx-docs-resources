@@ -25,7 +25,7 @@ processing:
       STREAMX_BLUEPRINTS_SITEMAP-GENERATOR-PROCESSING-SERVICE_OUTPUT-KEY: sitemap.xml
 
 delivery:
-  web-delivery-service:
+  web:
     image: web-delivery-service
     incoming:
       pages:

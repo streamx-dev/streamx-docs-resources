@@ -21,7 +21,7 @@ processing:
         topic: outboxes/web-resources
 
 delivery:
-  web-delivery-service:
+  web:
     image: web-delivery-service
     incoming:
       pages:

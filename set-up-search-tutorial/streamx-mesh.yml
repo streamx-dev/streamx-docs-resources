@@ -22,14 +22,14 @@ processing:
         topic: outboxes/search-feeds
 
 delivery:
-  web-delivery-service:
+  web:
     image: web-delivery-service
     incoming:
       pages:
         topic: outboxes/pages
     port: 8081
 
-  search-delivery-service:
+  search:
     image: search-delivery-service
     incoming:
       search-feeds:
