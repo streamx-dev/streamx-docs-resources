@@ -1,5 +1,5 @@
 {
-  "rendererKey": { "string": "page-renderer" },
+  "rendererKey": { "string": "template.html" },
   "dataKeyMatchPattern": { "string": "product:.*" },
   "outputKeyTemplate": { "string": "generated/{{id}}.html" },
   "outputType": { "dev.streamx.blueprints.data.RenderingContext.OutputType": "PAGE" }
