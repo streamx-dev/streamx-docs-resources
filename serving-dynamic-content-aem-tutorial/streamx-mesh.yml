@@ -43,12 +43,8 @@ processing:
     outgoing:
       outgoing-rendering-requests:
         topic: relays/rendering-requests
-      pages:
-        topic: inboxes/pages
       fragments:
         topic: inboxes/fragments
-      compositions:
-        topic: inboxes/compositions
 
 delivery:
   web-delivery-service:
