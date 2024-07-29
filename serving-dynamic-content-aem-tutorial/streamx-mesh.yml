@@ -6,11 +6,11 @@ processing:
   relay:
     image: relay-processing-service
     incoming:
-      incoming-page-fragments:
-        topic: inboxes/page-fragments
+      incoming-fragments:
+        topic: inboxes/fragments
     outgoing:
-      outgoing-page-fragments:
-        topic: outboxes/page-fragments
+      outgoing-fragments:
+        topic: outboxes/fragments
 
   data-collector-processing-service:
     image: data-collector-processing-service
@@ -54,6 +54,6 @@ delivery:
   web-delivery-service:
     image: web-delivery-service
     incoming:
-      page-fragments:
-        topic: outboxes/page-fragments
+      fragments:
+        topic: outboxes/fragments
     port: 8081
