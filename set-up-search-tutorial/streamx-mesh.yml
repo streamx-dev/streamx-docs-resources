@@ -1,5 +1,5 @@
 defaultRegistry: ghcr.io/streamx-dev/streamx-blueprints
-defaultImageTag: 0.0.16-jvm
+defaultImageTag: 0.0.17-SNAPSHOT-jvm
 tenant: streamx
 
 processing:
@@ -29,9 +29,21 @@ delivery:
         topic: outboxes/pages
     port: 8081
 
-  search-delivery-service:
-    image: search-delivery-service
+  opensearch-delivery-service:
+    image: opensearch-delivery-service
     incoming:
       search-feeds:
         topic: outboxes/search-feeds
     port: 8082
+    environment:
+      QUARKUS_HIBERNATE_SEARCH_STANDALONE_ELASTICSEARCH_HOSTS: opensearch-delivery-service.opensearch:9200
+    components:
+      opensearch:
+        image: "docker.io/opensearchproject/opensearch:2.13.0"
+        ports:
+          - 9200:9200
+          - 9300:9300
+        environment:
+          DISABLE_SECURITY_PLUGIN: true
+          OPENSEARCH_INITIAL_ADMIN_PASSWORD: "cust0m-PA$$word"
+          discovery.type: "single-node"
