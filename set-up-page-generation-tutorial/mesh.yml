@@ -1,27 +1,38 @@
 defaultRegistry: ghcr.io/streamx-dev/streamx-blueprints
-defaultImageTag: 0.0.16-jvm
+defaultImageTag: 0.0.20-jvm
 tenant: streamx
+
+sources:
+  cli:
+    outgoing:
+      - "pages"
+      - "fragments"
+      - "assets"
+      - "web-resources"
+      - "data"
+      - "renderers"
+      - "rendering-contexts"
 
 processing:
   relay:
     image: relay-processing-service
     incoming:
-      incoming-pages:
+      pages:
         topic: inboxes/pages
-      incoming-fragments:
+      fragments:
         topic: inboxes/fragments
-      incoming-assets:
+      assets:
         topic: inboxes/assets
-      incoming-web-resources:
+      web-resources:
         topic: inboxes/web-resources
     outgoing:
-      outgoing-pages:
+      relayed-pages:
         topic: outboxes/pages
-      outgoing-fragments:
+      relayed-fragments:
         topic: outboxes/fragments
-      outgoing-assets:
+      relayed-assets:
         topic: outboxes/assets
-      outgoing-web-resources:
+      relayed-web-resources:
         topic: outboxes/web-resources
 
   rendering-engine-processing-service:
