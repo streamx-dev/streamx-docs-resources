@@ -1,15 +1,23 @@
 defaultRegistry: ghcr.io/streamx-dev/streamx-blueprints
-defaultImageTag: 0.0.16-jvm
+defaultImageTag: 0.0.20-jvm
 tenant: streamx
+
+sources:
+  cli:
+    outgoing:
+      - "fragments"
+      - "data"
+      - "renderers"
+      - "rendering-contexts"
 
 processing:
   relay:
     image: relay-processing-service
     incoming:
-      incoming-fragments:
+      fragments:
         topic: inboxes/fragments
     outgoing:
-      outgoing-fragments:
+      relayed-fragments:
         topic: outboxes/fragments
 
   data-collector-processing-service:

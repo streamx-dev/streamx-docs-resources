@@ -1,15 +1,20 @@
 defaultRegistry: ghcr.io/streamx-dev/streamx-blueprints
-defaultImageTag: 0.0.16-jvm
+defaultImageTag: 0.0.20-jvm
 tenant: streamx
+
+sources:
+  cli:
+    outgoing:
+      - "pages"
 
 processing:
   relay:
     image: relay-processing-service
     incoming:
-      incoming-pages:
+      pages:
         topic: inboxes/pages
     outgoing:
-      outgoing-pages:
+      relayed-pages:
         topic: outboxes/pages
 
   sitemap-generator:
