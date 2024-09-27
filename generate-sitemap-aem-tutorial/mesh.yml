@@ -8,14 +8,17 @@ sources:
       - "pages"
 
 processing:
-  relay:
+  relay-pages:
     image: relay-processing-service
     incoming:
-      pages:
+      messages:
         topic: inboxes/pages
     outgoing:
-      relayed-pages:
+      relayed-messages:
         topic: outboxes/pages
+    environment:
+      MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: page-schema
+      MP_MESSAGING_INCOMING_RELAYED-MESSAGES_SCHEMA: page-schema
 
   sitemap-generator:
     image: sitemap-generator-processing-service

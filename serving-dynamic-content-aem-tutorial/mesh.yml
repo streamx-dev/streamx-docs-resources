@@ -11,14 +11,17 @@ sources:
       - "rendering-contexts"
 
 processing:
-  relay:
+  relay-fragments:
     image: relay-processing-service
     incoming:
-      fragments:
+      messages:
         topic: inboxes/fragments
     outgoing:
-      relayed-fragments:
+      relayed-messages:
         topic: outboxes/fragments
+    environment:
+      MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: fragment-schema
+      MP_MESSAGING_INCOMING_RELAYED-MESSAGES_SCHEMA: fragment-schema
 
   data-collector-processing-service:
     image: data-collector-processing-service
