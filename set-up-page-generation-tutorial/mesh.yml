@@ -2,27 +2,65 @@ defaultRegistry: ghcr.io/streamx-dev/streamx-blueprints
 defaultImageTag: 0.0.16-jvm
 tenant: streamx
 
+sources:
+  cli:
+    outgoing:
+      - "pages"
+      - "assets"
+      - "web-resources"
+      - "fragments"
+      - "data"
+      - "renderers"
+      - "rendering-contexts"
+
 processing:
-  relay:
+  relay-pages:
     image: relay-processing-service
     incoming:
-      incoming-pages:
+      inchannel:
         topic: inboxes/pages
-      incoming-fragments:
+    outgoing:
+      outchannel:
+        topic: outboxes/pages
+    environment:
+      MP_MESSAGING_INCOMING_INCHANNEL_SCHEMA: pageSchema
+      MP_MESSAGING_OUTGOING_OUTCHANNEL_SCHEMA: pageSchema
+
+  relay-fragments:
+    image: relay-processing-service
+    incoming:
+      inchannel:
         topic: inboxes/fragments
-      incoming-assets:
+    outgoing:
+      outchannel:
+        topic: outboxes/fragments
+    environment:
+      MP_MESSAGING_INCOMING_INCHANNEL_SCHEMA: fragmentSchema
+      MP_MESSAGING_OUTGOING_OUTCHANNEL_SCHEMA: fragmentSchema
+
+  relay-assets:
+    image: relay-processing-service
+    incoming:
+      inchannel:
         topic: inboxes/assets
-      incoming-web-resources:
+    outgoing:
+      outchannel:
+        topic: outboxes/assets
+    environment:
+      MP_MESSAGING_INCOMING_INCHANNEL_SCHEMA: assetSchema
+      MP_MESSAGING_OUTGOING_OUTCHANNEL_SCHEMA: assetSchema
+
+  relay-web-resources:
+    image: relay-processing-service
+    incoming:
+      inchannel:
         topic: inboxes/web-resources
     outgoing:
-      outgoing-pages:
-        topic: outboxes/pages
-      outgoing-fragments:
-        topic: outboxes/fragments
-      outgoing-assets:
-        topic: outboxes/assets
-      outgoing-web-resources:
+      outchannel:
         topic: outboxes/web-resources
+    environment:
+      MP_MESSAGING_INCOMING_INCHANNEL_SCHEMA: webResourceSchema
+      MP_MESSAGING_OUTGOING_OUTCHANNEL_SCHEMA: webResourceSchema
 
   rendering-engine-processing-service:
     image: rendering-engine-processing-service
