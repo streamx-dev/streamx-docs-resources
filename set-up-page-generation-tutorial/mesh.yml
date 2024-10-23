@@ -1,5 +1,5 @@
 defaultRegistry: ghcr.io/streamx-dev/streamx-blueprints
-defaultImageTag: 0.0.20-jvm
+defaultImageTag: 0.0.27-jvm
 tenant: streamx
 
 sources:
@@ -24,7 +24,7 @@ processing:
         topic: outboxes/pages
     environment:
       MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: page-schema
-      MP_MESSAGING_INCOMING_RELAYED-MESSAGES_SCHEMA: page-schema
+      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: page-schema
 
   relay-fragments:
     image: relay-processing-service
@@ -36,7 +36,7 @@ processing:
         topic: outboxes/fragments
     environment:
       MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: fragment-schema
-      MP_MESSAGING_INCOMING_RELAYED-MESSAGES_SCHEMA: fragment-schema
+      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: fragment-schema
 
   relay-assets:
     image: relay-processing-service
@@ -48,7 +48,7 @@ processing:
         topic: outboxes/assets
     environment:
       MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: asset-schema
-      MP_MESSAGING_INCOMING_RELAYED-MESSAGES_SCHEMA: asset-schema
+      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: asset-schema
 
   relay-web-resources:
     image: relay-processing-service
@@ -60,7 +60,7 @@ processing:
         topic: outboxes/web-resources
     environment:
       MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: web-resource-schema
-      MP_MESSAGING_INCOMING_RELAYED-MESSAGES_SCHEMA: web-resource-schema
+      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: web-resource-schema
 
   rendering-engine-processing-service:
     image: rendering-engine-processing-service

@@ -1,5 +1,5 @@
 defaultRegistry: ghcr.io/streamx-dev/streamx-blueprints
-defaultImageTag: 0.0.20-jvm
+defaultImageTag: 0.0.27-jvm
 tenant: streamx
 
 sources:
@@ -18,7 +18,7 @@ processing:
         topic: outboxes/pages
     environment:
       MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: page-schema
-      MP_MESSAGING_INCOMING_RELAYED-MESSAGES_SCHEMA: page-schema
+      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: page-schema
 
   sitemap-generator:
     image: sitemap-generator-processing-service

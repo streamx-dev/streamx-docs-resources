@@ -1,5 +1,5 @@
 defaultRegistry: ghcr.io/streamx-dev/streamx-blueprints
-defaultImageTag: 0.0.20-jvm
+defaultImageTag: 0.0.27-jvm
 tenant: streamx
 
 sources:
@@ -21,7 +21,7 @@ processing:
         topic: outboxes/fragments
     environment:
       MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: fragment-schema
-      MP_MESSAGING_INCOMING_RELAYED-MESSAGES_SCHEMA: fragment-schema
+      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: fragment-schema
 
   data-collector-processing-service:
     image: data-collector-processing-service
