@@ -10,7 +10,7 @@ sources:
       - "web-resources"
 
 processing:
-  relay-pages:
+  pages-relay:
     image: relay-processing-service
     incoming:
       messages:
@@ -22,7 +22,7 @@ processing:
       MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: page-schema
       MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: page-schema
 
-  relay-assets:
+  assets-relay:
     image: relay-processing-service
     incoming:
       messages:
@@ -34,7 +34,7 @@ processing:
       MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: asset-schema
       MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: asset-schema
 
-  relay-web-resources:
+  web-resources-relay:
     image: relay-processing-service
     incoming:
       messages:

@@ -8,7 +8,7 @@ sources:
       - "pages"
 
 processing:
-  relay-pages:
+  pages-relay:
     image: relay-processing-service
     incoming:
       messages:
