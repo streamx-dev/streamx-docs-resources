@@ -21,8 +21,8 @@ processing:
       outgoing-sitemaps:
         topic: outboxes/web-resources
     environment:
-      STREAMX_BLUEPRINTS_SITEMAP-GENERATOR-PROCESSING-SERVICE_BASE-URL: http://localhost:8081
-      STREAMX_BLUEPRINTS_SITEMAP-GENERATOR-PROCESSING-SERVICE_OUTPUT-KEY: sitemap.xml
+      STREAMX_BLUEPRINTS_SITEMAP-GENERATOR-PROCESSING-SERVICE_BASE-URL: "http://localhost:8081"
+      STREAMX_BLUEPRINTS_SITEMAP-GENERATOR-PROCESSING-SERVICE_OUTPUT-KEY: "sitemap.xml"
 
 delivery:
   web-delivery-service:

@@ -58,5 +58,3 @@ delivery:
       web-resources:
         topic: outboxes/web-resources
     port: 8081
-
-
