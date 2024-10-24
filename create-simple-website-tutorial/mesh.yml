@@ -1,5 +1,5 @@
 defaultRegistry: ghcr.io/streamx-dev/streamx-blueprints
-defaultImageTag: 0.0.20-jvm
+defaultImageTag: 0.0.27-jvm
 tenant: streamx
 
 sources:
@@ -10,22 +10,41 @@ sources:
       - "web-resources"
 
 processing:
-  relay:
+  relay-pages:
     image: relay-processing-service
     incoming:
-      pages:
+      messages:
         topic: inboxes/pages
-      assets:
+    outgoing:
+      relayed-messages:
+        topic: outboxes/pages
+    environment:
+      MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: page-schema
+      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: page-schema
+
+  relay-assets:
+    image: relay-processing-service
+    incoming:
+      messages:
         topic: inboxes/assets
-      web-resources:
+    outgoing:
+      relayed-messages:
+        topic: outboxes/assets
+    environment:
+      MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: asset-schema
+      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: asset-schema
+
+  relay-web-resources:
+    image: relay-processing-service
+    incoming:
+      messages:
         topic: inboxes/web-resources
     outgoing:
-      relayed-pages:
-        topic: outboxes/pages
-      relayed-assets:
-        topic: outboxes/assets
-      relayed-web-resources:
+      relayed-messages:
         topic: outboxes/web-resources
+    environment:
+      MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: web-resource-schema
+      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: web-resource-schema
 
 delivery:
   web-delivery-service:
