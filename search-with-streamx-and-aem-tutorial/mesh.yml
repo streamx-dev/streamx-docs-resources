@@ -29,7 +29,7 @@ delivery:
         topic: outboxes/indexable-resources
     port: 8082
     environment:
-      QUARKUS_ELASTICSEARCH_HOSTS: opensearch-delivery-service.opensearch:9200
+      QUARKUS_ELASTICSEARCH_HOSTS: "opensearch-delivery-service.opensearch:9200"
     components:
       opensearch:
         image: "docker.io/opensearchproject/opensearch:2.13.0"
@@ -37,6 +37,6 @@ delivery:
           - 9200:9200
           - 9300:9300
         environment:
-          DISABLE_SECURITY_PLUGIN: true
+          DISABLE_SECURITY_PLUGIN: "true"
           OPENSEARCH_INITIAL_ADMIN_PASSWORD: "cust0m-PA$$word"
           discovery.type: "single-node"
