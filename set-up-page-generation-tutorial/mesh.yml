@@ -1,28 +1,66 @@
 defaultRegistry: ghcr.io/streamx-dev/streamx-blueprints
-defaultImageTag: 0.0.16-jvm
+defaultImageTag: 0.0.27-jvm
 tenant: streamx
 
+sources:
+  cli:
+    outgoing:
+      - "pages"
+      - "fragments"
+      - "assets"
+      - "web-resources"
+      - "data"
+      - "renderers"
+      - "rendering-contexts"
+
 processing:
-  relay:
+  pages-relay:
     image: relay-processing-service
     incoming:
-      incoming-pages:
+      messages:
         topic: inboxes/pages
-      incoming-fragments:
+    outgoing:
+      relayed-messages:
+        topic: outboxes/pages
+    environment:
+      MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: page-schema
+      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: page-schema
+
+  fragments-relay:
+    image: relay-processing-service
+    incoming:
+      messages:
         topic: inboxes/fragments
-      incoming-assets:
+    outgoing:
+      relayed-messages:
+        topic: outboxes/fragments
+    environment:
+      MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: fragment-schema
+      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: fragment-schema
+
+  assets-relay:
+    image: relay-processing-service
+    incoming:
+      messages:
         topic: inboxes/assets
-      incoming-web-resources:
+    outgoing:
+      relayed-messages:
+        topic: outboxes/assets
+    environment:
+      MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: asset-schema
+      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: asset-schema
+
+  web-resources-relay:
+    image: relay-processing-service
+    incoming:
+      messages:
         topic: inboxes/web-resources
     outgoing:
-      outgoing-pages:
-        topic: outboxes/pages
-      outgoing-fragments:
-        topic: outboxes/fragments
-      outgoing-assets:
-        topic: outboxes/assets
-      outgoing-web-resources:
+      relayed-messages:
         topic: outboxes/web-resources
+    environment:
+      MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: web-resource-schema
+      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: web-resource-schema
 
   rendering-engine-processing-service:
     image: rendering-engine-processing-service
@@ -42,8 +80,6 @@ processing:
         topic: inboxes/pages
       fragments:
         topic: inboxes/fragments
-      compositions:
-        topic: inboxes/compositions
 
 delivery:
   web-delivery-service:
