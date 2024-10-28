@@ -25,8 +25,8 @@ processing:
       relayed-messages:
         topic: outboxes/fragments
     environment:
-      MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: fragment-schema
-      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: fragment-schema
+      MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: "fragment-schema"
+      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: "fragment-schema"
 
   data-collector-processing-service:
     image: data-collector-processing-service

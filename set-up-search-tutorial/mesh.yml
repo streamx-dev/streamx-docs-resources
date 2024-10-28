@@ -17,8 +17,8 @@ processing:
       relayed-messages:
         topic: outboxes/pages
     environment:
-      MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: page-schema
-      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: page-schema
+      MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: "page-schema"
+      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: "page-schema"
 
   indexable-resource-producer:
     image: indexable-resource-producer-processing-service
