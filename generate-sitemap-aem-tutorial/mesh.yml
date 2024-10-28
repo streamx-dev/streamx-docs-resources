@@ -2,6 +2,11 @@ defaultRegistry: ghcr.io/streamx-dev/streamx-blueprints
 defaultImageTag: 0.0.29-jvm
 tenant: streamx
 
+ingestion:
+  rest-ingestion:
+    environment:
+      QUARKUS_HTTP_AUTH_PERMISSION_BEARER_POLICY: "permit"
+
 sources:
   cli:
     outgoing:

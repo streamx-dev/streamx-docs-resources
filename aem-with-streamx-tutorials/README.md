@@ -61,20 +61,20 @@ following system properties to Maven
 
 | Dependency                                           | Version    |
 |------------------------------------------------------|------------|
-| `+dev.streamx:ingestion-client:jar+`                 | `+0.0.7+`  |
-| `+dev.streamx:streamx-connector-sling:jar+`          | `+0.0.5+`  |
-| `+dev.streamx:streamx-connector-aem:jar+`            | `+0.0.3+`  |
-| `+dev.streamx:streamx-connector-aem-blueprints:jar+` | `+0.0.3+`  |
+| `+dev.streamx:ingestion-client:jar+`                 | `+0.0.44+` |
+| `+dev.streamx:streamx-connector-sling:jar+`          | `+0.2.2+`  |
+| `+dev.streamx:streamx-connector-aem:jar+`            | `+0.0.5+`  |
+| `+dev.streamx:streamx-connector-aem-blueprints:jar+` | `+0.0.5+`  |
 
 * StreamX Connectors' dependencies
 
-| Dependency                                              | Version     |
-|---------------------------------------------------------|-------------|
-| `+org.apache.avro:avro:jar+`                            | `+1.11.3+`  |
-| `+com.fasterxml.jackson.core:jackson-annotations:jar+`  | `+2.15.3+`  |
-| `+com.fasterxml.jackson.core:jackson-core:jar+`         | `+2.15.3+`  |
-| `+com.fasterxml.jackson.core:jackson-databind:jar+`     | `+2.15.3+`  |
-| `+org.jsoup:jsoup:jar+`                                 | `+1.16.1+`  |
+| Dependency                                              | Version    |
+|---------------------------------------------------------|------------|
+| `+org.apache.avro:avro:jar+`                            | `+1.11.3+` |
+| `+com.fasterxml.jackson.core:jackson-annotations:jar+`  | `+2.16.0+` |
+| `+com.fasterxml.jackson.core:jackson-core:jar+`         | `+2.16.0+` |
+| `+com.fasterxml.jackson.core:jackson-databind:jar+`     | `+2.16.0+` |
+| `+org.jsoup:jsoup:jar+`                                 | `+1.16.1+` |
 
 # StreamX OSGi configuration
 
