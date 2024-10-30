@@ -1,16 +1,24 @@
 defaultRegistry: ghcr.io/streamx-dev/streamx-blueprints
-defaultImageTag: 0.0.19-jvm
+defaultImageTag: 0.0.29-jvm
 tenant: streamx
 
+sources:
+  cli:
+    outgoing:
+      - "pages"
+
 processing:
-  relay:
+  pages-relay:
     image: relay-processing-service
     incoming:
-      pages:
+      messages:
         topic: inboxes/pages
     outgoing:
-      relayed-pages:
+      relayed-messages:
         topic: outboxes/pages
+    environment:
+      MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: "page-schema"
+      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: "page-schema"
 
   indexable-resource-producer:
     image: indexable-resource-producer-processing-service
@@ -36,7 +44,7 @@ delivery:
         topic: outboxes/indexable-resources
     port: 8082
     environment:
-      QUARKUS_ELASTICSEARCH_HOSTS: opensearch-delivery-service.opensearch:9200
+      QUARKUS_ELASTICSEARCH_HOSTS: "opensearch-delivery-service.opensearch:9200"
     components:
       opensearch:
         image: "docker.io/opensearchproject/opensearch:2.13.0"
@@ -44,6 +52,6 @@ delivery:
           - 9200:9200
           - 9300:9300
         environment:
-          DISABLE_SECURITY_PLUGIN: true
+          DISABLE_SECURITY_PLUGIN: "true"
           OPENSEARCH_INITIAL_ADMIN_PASSWORD: "cust0m-PA$$word"
           discovery.type: "single-node"

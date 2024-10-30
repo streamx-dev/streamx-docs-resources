@@ -1,0 +1,5 @@
+{
+  "name": "aem",
+  "streamxUrl": "http://localhost:8080",
+  "resourcePathPatterns": ".*"
+}

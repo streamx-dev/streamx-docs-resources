@@ -1,16 +1,27 @@
 defaultRegistry: ghcr.io/streamx-dev/streamx-blueprints
-defaultImageTag: 0.0.16-jvm
+defaultImageTag: 0.0.29-jvm
 tenant: streamx
 
+sources:
+  cli:
+    outgoing:
+      - "pages"
+      - "data"
+      - "renderers"
+      - "rendering-contexts"
+
 processing:
-  relay:
+  pages-relay:
     image: relay-processing-service
     incoming:
-      incoming-pages:
+      messages:
         topic: inboxes/pages
     outgoing:
-      outgoing-pages:
+      relayed-messages:
         topic: outboxes/pages
+    environment:
+      MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: "page-schema"
+      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: "page-schema"
 
   json-aggregator:
     image: json-aggregator-processing-service
@@ -25,11 +36,11 @@ processing:
       aggregated-multivalued-data:
         topic: inboxes/data
     environment:
-      STREAMX_BLUEPRINTS_JSON_AGGREGATOR_PROCESSING_SERVICE_CONFIGURATIONS[0]_MASTER_TYPE: product
-      STREAMX_BLUEPRINTS_JSON_AGGREGATOR_PROCESSING_SERVICE_CONFIGURATIONS[0]_OPTIONAL_TYPES: price,reviews
-      STREAMX_BLUEPRINTS_JSON_AGGREGATOR_PROCESSING_SERVICE_CONFIGURATIONS[0]_OUTPUT_TYPE: aggregated_product
-      STREAMX_BLUEPRINTS_JSON_AGGREGATOR_PROCESSING_SERVICE_CONFIGURATIONS[1]_MASTER_TYPE: review
-      STREAMX_BLUEPRINTS_JSON_AGGREGATOR_PROCESSING_SERVICE_CONFIGURATIONS[1]_OUTPUT_TYPE: reviews
+      STREAMX_BLUEPRINTS_JSON_AGGREGATOR_PROCESSING_SERVICE_CONFIGURATIONS_0__MASTER_TYPE: "product"
+      STREAMX_BLUEPRINTS_JSON_AGGREGATOR_PROCESSING_SERVICE_CONFIGURATIONS_0__OPTIONAL_TYPES: "price,reviews"
+      STREAMX_BLUEPRINTS_JSON_AGGREGATOR_PROCESSING_SERVICE_CONFIGURATIONS_0__OUTPUT_TYPE: "aggregated_product"
+      STREAMX_BLUEPRINTS_JSON_AGGREGATOR_PROCESSING_SERVICE_CONFIGURATIONS_1__MASTER_TYPE: "review"
+      STREAMX_BLUEPRINTS_JSON_AGGREGATOR_PROCESSING_SERVICE_CONFIGURATIONS_1__OUTPUT_TYPE: "reviews"
 
   rendering-engine-processing-service:
     image: rendering-engine-processing-service

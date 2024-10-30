@@ -1,16 +1,29 @@
 defaultRegistry: ghcr.io/streamx-dev/streamx-blueprints
-defaultImageTag: 0.0.16-jvm
+defaultImageTag: 0.0.29-jvm
 tenant: streamx
 
+ingestion:
+  rest-ingestion:
+    environment:
+      QUARKUS_HTTP_AUTH_PERMISSION_BEARER_POLICY: "permit"
+
+sources:
+  cli:
+    outgoing:
+      - "pages"
+
 processing:
-  relay:
+  pages-relay:
     image: relay-processing-service
     incoming:
-      incoming-pages:
+      messages:
         topic: inboxes/pages
     outgoing:
-      outgoing-pages:
+      relayed-messages:
         topic: outboxes/pages
+    environment:
+      MP_MESSAGING_INCOMING_MESSAGES_SCHEMA: "page-schema"
+      MP_MESSAGING_OUTGOING_RELAYED-MESSAGES_SCHEMA: "page-schema"
 
   sitemap-generator:
     image: sitemap-generator-processing-service
@@ -21,8 +34,8 @@ processing:
       outgoing-sitemaps:
         topic: outboxes/web-resources
     environment:
-      STREAMX_BLUEPRINTS_SITEMAP-GENERATOR-PROCESSING-SERVICE_BASE-URL: http://localhost:8081
-      STREAMX_BLUEPRINTS_SITEMAP-GENERATOR-PROCESSING-SERVICE_OUTPUT-KEY: sitemap.xml
+      STREAMX_BLUEPRINTS_SITEMAP-GENERATOR-PROCESSING-SERVICE_BASE-URL: "http://localhost:8081"
+      STREAMX_BLUEPRINTS_SITEMAP-GENERATOR-PROCESSING-SERVICE_OUTPUT-KEY: "sitemap.xml"
 
 delivery:
   web-delivery-service:
