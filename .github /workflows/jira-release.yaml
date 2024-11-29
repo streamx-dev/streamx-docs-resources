@@ -1,0 +1,29 @@
+name: 'Release: jira'
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag"
+        type: string
+        required: false
+  release:
+    types:
+      - published
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: '0'
+
+      - name: Jira release
+        uses: streamx-dev/streamx-common-github-actions/.github/actions/jira-release@main
+        with:
+          atlassianCloudUser: ${{ secrets.ATLASSIAN_CLOUD_USER }}
+          atlassianCloudApiKey: ${{ secrets.ATLASSIAN_CLOUD_APIKEY }}
+          atlassianCloudDomain: ${{ secrets.ATLASSIAN_CLOUD_DOMAIN }}
+          atlassianCloudJiraProject: ${{ vars.ATLASSIAN_CLOUD_JIRA_PROJECT }}
+          releaseNamePrefix: ${{ github.event.repository.name }}
