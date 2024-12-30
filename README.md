@@ -1,5 +1,10 @@
 # StreamX documentation resources
 
+This repository contains the resources needed for the StreamX tutorials.
+
+Each release of this repository is caused by a newly released version of the StreamX Documentation 
+e.g. [the StreamX documentation](https://www.streamx.dev/guides/index.html) in version `1.0.1` refers to this repository tagged with `1.0.1`.
+
 | Tutorial Resources                                                           | Guide                                                                                                                                |
 |------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | [generate-sitemap-aem-tutorial](generate-sitemap-aem-tutorial)               | [Set up sitemap generation with StreamX and AEM](https://www.streamx.dev/guides/generate-sitemap-aem-tutorial.html)                  |
