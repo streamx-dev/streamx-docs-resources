@@ -1,0 +1,27 @@
+name: 'Release'
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag"
+        type: string
+        required: false
+        default: test
+  push:
+    branches:
+      - 'feature/DXP-1414-release-gh-action'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: '0'
+
+      - name: Create tags
+        run: git tag ${{ github.event.inputs.tag }}
+
+      - name: Push tags
+        run: git push origin tag $(git describe --tags --abbrev=0)
