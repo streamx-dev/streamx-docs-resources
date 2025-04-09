@@ -1,4 +1,4 @@
 {
-  "pages.path.regexp": "^/content/we-retail/.+",
+  "pages.path.regexp": "^/content/wknd/.+",
   "shorten.content.paths": false
 }
