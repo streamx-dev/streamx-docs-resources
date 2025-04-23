@@ -8,6 +8,11 @@ sources:
       - "assets"
       - "web-resources"
 
+ingestion:
+  rest-ingestion:
+    environment:
+      QUARKUS_HTTP_AUTH_PERMISSION_BEARER_POLICY: "permit"
+
 processing:
   pages-relay:
     image: relay-processing-service
