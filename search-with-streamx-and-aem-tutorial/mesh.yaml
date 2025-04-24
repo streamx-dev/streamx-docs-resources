@@ -1,15 +1,15 @@
 defaultRegistry: ghcr.io/streamx-dev/streamx-blueprints
 defaultImageTag: 1.0.3-jvm
 
-ingestion:
-  rest-ingestion:
-    environment:
-      QUARKUS_HTTP_AUTH_PERMISSION_BEARER_POLICY: "permit"
-
 sources:
   cli:
     outgoing:
       - "pages"
+
+ingestion:
+  rest-ingestion:
+    environment:
+      QUARKUS_HTTP_AUTH_PERMISSION_BEARER_POLICY: "permit"
 
 processing:
   pages-relay:
