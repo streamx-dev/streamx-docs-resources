@@ -101,6 +101,18 @@ tasks:
       - task: aem:provision:repl-agent-publish
       - task: aem:provision:repl-agent-flush
       - task: aem:provision:crx
+      - task: aem:provision:service-pack
+      - task: aem:provision:wknd
+
+  aem:provision:service-pack:
+    desc: deploy AEM Service Pack
+    internal: true
+    cmd: sh aemw package deploy --file "aem/home/lib/aem-service-pkg-6.5.*.0.zip"
+
+  aem:provision:wknd:
+    desc: deploy WKND Adobe project
+    internal: true
+    cmd: sh aemw package deploy --file "aem/home/lib/aem-guides-wknd.all-3.2.0-classic.zip"
 
   aem:provision:repl-agent-publish:
     desc: configure replication agent on AEM author instance
