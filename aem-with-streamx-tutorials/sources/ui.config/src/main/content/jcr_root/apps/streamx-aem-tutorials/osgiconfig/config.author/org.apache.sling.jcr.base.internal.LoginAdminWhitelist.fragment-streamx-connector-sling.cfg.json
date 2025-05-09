@@ -1,0 +1,6 @@
+{
+  "whitelist.bundles": [
+    "streamx-connector-sling"
+  ],
+  "whitelist.name": "streamx-connector-sling"
+}

@@ -210,22 +210,22 @@
             <dependency>
                 <groupId>dev.streamx</groupId>
                 <artifactId>streamx-connector-aem</artifactId>
-                <version>0.0.5</version>
+                <version>0.0.15</version>
             </dependency>
             <dependency>
                 <groupId>dev.streamx</groupId>
                 <artifactId>streamx-connector-aem-blueprints</artifactId>
-                <version>0.0.5</version>
+                <version>0.0.15</version>
             </dependency>
             <dependency>
                 <groupId>dev.streamx</groupId>
                 <artifactId>streamx-connector-sling</artifactId>
-                <version>0.2.2</version>
+                <version>0.2.9</version>
             </dependency>
             <dependency>
                 <groupId>dev.streamx</groupId>
                 <artifactId>ingestion-client</artifactId>
-                <version>0.0.44</version>
+                <version>1.0.1</version>
             </dependency>
 
             <!-- Serialization -->
